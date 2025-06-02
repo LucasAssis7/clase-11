@@ -75,24 +75,33 @@
         </p>
     </footer>
 
-    <!-- Script para troca de imagem -->
+    <!-- Script original -->
+    <script src="js/profes.js"></script>
+
+    <!-- Script adicional que NÃO interfere com o profes.js -->
     <script>
-        document.getElementById('profesorSelect').addEventListener('change', function() {
-            const selected = this.value;
+        document.addEventListener("DOMContentLoaded", function () {
+            const select = document.getElementById('profesorSelect');
             const img1 = document.getElementById('primera');
             const img2 = document.getElementById('segunda');
 
-            if (selected === 'Verónica Ode, María') {
-                img1.classList.add('esconde');
-                img2.classList.remove('esconde');
-            } else {
-                img1.classList.remove('esconde');
-                img2.classList.add('esconde');
+            function atualizarImagem() {
+                const selected = select.value;
+                if (selected === 'Verónica Ode, María') {
+                    img1.classList.add('esconde');
+                    img2.classList.remove('esconde');
+                } else {
+                    img1.classList.remove('esconde');
+                    img2.classList.add('esconde');
+                }
             }
+
+            // Executa uma vez ao carregar
+            atualizarImagem();
+
+            // E toda vez que o select mudar
+            select.addEventListener('change', atualizarImagem);
         });
     </script>
-
-    <!-- Script original que você já usava -->
-    <script src="js/profes.js"></script>
 </body>
 </html>
